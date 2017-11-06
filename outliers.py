@@ -131,13 +131,12 @@ def evaluateMethods(X,Y, p_svm, p_cov, p_ift, p_lof, p_wpr, p_gmx, debug=True):
         "Cov": EllipticEnvelope(contamination=p_cov[0]),
         "IsoF": IsolationForest(contamination=p_ift[0]),
         "LOF": LocalOutlierFactor(n_neighbors=p_lof[0], contamination=p_lof[1]),
-        #"DDC-E": ddc_outlier(alpha=p_wpr[0],metric='euclidean'),
         "DDC-C": ddc_outlier(alpha=p_wpr[0],metric='cosine'),
         "DDC-J": ddc_outlier(alpha=p_wpr[0],metric='jaccard'),
-        #"DDC-SE": ddc_outlier(alpha=p_wpr[0],metric='sqeuclidean'),
         "DDC-H": ddc_outlier(alpha=p_wpr[0],metric='hamming'),
         "DDC-M": ddc_outlier(alpha=p_wpr[0],metric='mahalanobis'),
         "Gau": GaussianMixtureOutlier(alpha=p_gmx[0]),
+        "DDC": ddc_outlier(alpha=p_wpr[0]),
         }
         
     results = pd.DataFrame()
