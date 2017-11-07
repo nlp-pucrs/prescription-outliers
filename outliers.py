@@ -100,6 +100,37 @@ class ddc_outlier():
         y_pred[y_pred >= (pr_threshold*self.alpha)] = 1 # convert to false
         return y_pred
 
+def getClassifiers(epsilon):
+    classifiers = {
+        "Cov": EllipticEnvelope(contamination=epsilon),
+        "IsoF": IsolationForest(contamination=epsilon),
+        "LOF": LocalOutlierFactor(n_neighbors=500, contamination=epsilon),
+        "SVM": svm.OneClassSVM(nu=epsilon, gamma=4),
+        "Gau": GaussianMixtureOutlier(alpha=epsilon),
+        "DDC": ddc_outlier(alpha=epsilon),
+        "DDC-C": ddc_outlier(alpha=epsilon,metric='cosine'),
+        "DDC-J": ddc_outlier(alpha=epsilon,metric='jaccard'),
+        "DDC-H": ddc_outlier(alpha=epsilon,metric='hamming'),
+        "DDC-M": ddc_outlier(alpha=epsilon,metric='mahalanobis'),
+    }
+    return classifiers
+    
+def getRanges():
+    classifiers = {
+        "Cov": np.arange(0.01,0.5,0.01),
+        "IsoF": np.arange(0.01,0.5,0.01),
+        "LOF": np.arange(0.01,0.5,0.01),
+        "DDC-J": np.arange(0.01,1.0,0.01),
+        "SVM": np.arange(0.01,1.0,0.01),
+        "Gau": np.arange(0.01,1.0,0.01),
+        "DDC": np.arange(0.01,1.0,0.01),
+        "DDC-C": np.arange(0.01,1.0,0.01),
+        "DDC-J": np.arange(0.01,1.0,0.01),
+        "DDC-H": np.arange(0.01,1.0,0.01),
+        "DDC-M": np.arange(0.01,1.0,0.01),
+    }
+    return classifiers
+
 class GaussianMixtureOutlier():
     pb = []
     alpha = 0.6
@@ -126,18 +157,7 @@ class GaussianMixtureOutlier():
         return y
     
 def evaluateMethods(X,Y, p_svm, p_cov, p_ift, p_lof, p_wpr, p_gmx, debug=True):
-    classifiers = {
-        "SVM": svm.OneClassSVM(nu=p_svm[0], gamma=p_svm[1]),
-        "Cov": EllipticEnvelope(contamination=p_cov[0]),
-        "IsoF": IsolationForest(contamination=p_ift[0]),
-        "LOF": LocalOutlierFactor(n_neighbors=p_lof[0], contamination=p_lof[1]),
-        "DDC-C": ddc_outlier(alpha=p_wpr[0],metric='cosine'),
-        "DDC-J": ddc_outlier(alpha=p_wpr[0],metric='jaccard'),
-        "DDC-H": ddc_outlier(alpha=p_wpr[0],metric='hamming'),
-        "DDC-M": ddc_outlier(alpha=p_wpr[0],metric='mahalanobis'),
-        "Gau": GaussianMixtureOutlier(alpha=p_gmx[0]),
-        "DDC": ddc_outlier(alpha=p_wpr[0]),
-        }
+    classifiers = getClassifiers()
         
     results = pd.DataFrame()
     results['Time'] = 0
