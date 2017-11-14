@@ -111,7 +111,6 @@ def getClassifiers(epsilon):
         "DDC-C": ddc_outlier(alpha=epsilon,metric='cosine'),
         "DDC-J": ddc_outlier(alpha=epsilon,metric='jaccard'),
         "DDC-H": ddc_outlier(alpha=epsilon,metric='hamming'),
-        "DDC-M": ddc_outlier(alpha=epsilon,metric='mahalanobis'),
     }
     return classifiers
     
@@ -120,14 +119,12 @@ def getRanges():
         "Cov": np.arange(0.01,0.5,0.01),
         "IsoF": np.arange(0.01,0.5,0.01),
         "LOF": np.arange(0.01,0.5,0.01),
-        "DDC-J": np.arange(0.01,1.0,0.01),
         "SVM": np.arange(0.01,1.0,0.01),
         "Gau": np.arange(0.01,1.0,0.01),
         "DDC": np.arange(0.01,1.0,0.01),
         "DDC-C": np.arange(0.01,1.0,0.01),
         "DDC-J": np.arange(0.01,1.0,0.01),
         "DDC-H": np.arange(0.01,1.0,0.01),
-        "DDC-M": np.arange(0.01,1.0,0.01),
     }
     return classifiers
 
@@ -156,8 +153,8 @@ class GaussianMixtureOutlier():
         
         return y
     
-def evaluateMethods(X,Y, p_svm, p_cov, p_ift, p_lof, p_wpr, p_gmx, debug=True):
-    classifiers = getClassifiers()
+def evaluateMethods(X,Y, epsilon, debug=True):
+    classifiers = getClassifiers(epsilon)
         
     results = pd.DataFrame()
     results['Time'] = 0
@@ -261,13 +258,7 @@ def runParameterSearch(prescription, medications, ep_range, minimum=1000, norm=F
         f_scores = []
 
         for ep in ep_range:
-            p_svm = [ep,4]
-            p_cov = [ep]
-            p_ift = [ep]
-            p_lof = [500,ep]
-            p_wpr = [ep]
-            p_gmx = [ep]
-            results_norms = evaluateMethods(X, Y, p_svm, p_cov, p_ift, p_lof, p_wpr, p_gmx, debug=False)
+            results_norms = evaluateMethods(X, Y, ep, debug=False)
 
             #sys.stdout.write(str(ep) +', ')
             for idx in results_norms.index:
