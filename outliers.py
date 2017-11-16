@@ -288,4 +288,4 @@ def runParameterSearch(prescription, medications, ep_range, minimum=1000, norm=F
     results['Precision'] = max_p.mean(1)
     results['F-Measure'] = max_f.mean(1)
     
-    return results
+    return results, max_f
