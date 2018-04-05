@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/nlp-pucrs/prescription-outliers/master)
+
 # Prescription Outliers
 Preventing medication errors using unsupervised learning
 
