@@ -4,3 +4,4 @@ networkx
 matplotlib
 numpy
 scipy
+joblib
