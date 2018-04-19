@@ -1,5 +1,3 @@
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/nlp-pucrs/prescription-outliers/master)
-
 # Prescription Outliers
 DDC-Outlier: Preventing medication errors using unsupervised learning
 
@@ -9,9 +7,13 @@ DDC-Outlier: Preventing medication errors using unsupervised learning
 
 **Keywords:** Electronic Health Records, Prescription Errors, Unsupervised Learning
 
-Full Text, BibText (Soon)
+[Full Text](https://ieeexplore.ieee.org/document/8340108), [BibText](https://raw.githubusercontent.com/nlp-pucrs/prescription-outliers/master/santos2018ddc.bib)
 
-**Complete Reference:** (Soon)
+**Complete Reference:** Henrique D. P. dos Santos, Ana Helena D. P. S. Ulbrich, Vinicius Woloszyn, and Renata Vieira. 2018. DDC-Outlier: Preventing medication errors using unsupervised learning. IEEE Journal of Biomedical and Health Informatics, 2018, 8 pages. DOI: 10.1109/JBHI.2018.2828028
+
+### Online Experiments
+##### Run our experiments online with Binder
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/nlp-pucrs/prescription-outliers/master)
 
 ### PUCRS NLP Group
 This project belongs to [NLP Group at PUCRS, Brazil](http://www.inf.pucrs.br/linatural/)
