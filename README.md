@@ -15,5 +15,5 @@ DDC-Outlier: Preventing medication errors using unsupervised learning
 ##### Run our experiments online with Binder
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/nlp-pucrs/prescription-outliers/master)
 
-### PUCRS NLP Group
-This project belongs to [NLP Group at PUCRS, Brazil](http://www.inf.pucrs.br/linatural/)
+### PUCRS A.I. in HealthCare
+This project belongs to [GIAS at PUCRS, Brazil](http://www.inf.pucrs.br/ia-saude/)
