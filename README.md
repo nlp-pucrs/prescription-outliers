@@ -14,6 +14,7 @@ DDC-Outlier: Preventing medication errors using unsupervised learning
 ### Online Experiments
 ##### Run our experiments online with Binder
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/nlp-pucrs/prescription-outliers/master)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nlp-pucrs/prescription-outliers/blob/master/2_all_parameter_search.ipynb)
 
 ### PUCRS A.I. in HealthCare
 This project belongs to [GIAS at PUCRS, Brazil](http://www.inf.pucrs.br/ia-saude/)
